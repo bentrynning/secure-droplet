@@ -50,21 +50,21 @@ sudo systemctl restart ssh
 # sudo chmod 600 /home/$NEW_USER/.ssh/authorized_keys
 
 # 6. Install Fail2Ban to protect SSH from brute force attacks
-echo_info "Installing and configuring Fail2Ban..."
-sudo apt install fail2ban -y
+# echo_info "Installing and configuring Fail2Ban..."
+# sudo apt install fail2ban -y
 
-# Create a basic config file for SSH
-cat <<EOL | sudo tee /etc/fail2ban/jail.local
-[sshd]
-enabled = true
-port = ssh
-logpath = %(sshd_log)s
-maxretry = 5
-bantime = 3600
-EOL
+# # Create a basic config file for SSH
+# cat <<EOL | sudo tee /etc/fail2ban/jail.local
+# [sshd]
+# enabled = true
+# port = ssh
+# logpath = %(sshd_log)s
+# maxretry = 5
+# bantime = 3600
+# EOL
 
-sudo systemctl enable fail2ban
-sudo systemctl start fail2ban
+# sudo systemctl enable fail2ban
+# sudo systemctl start fail2ban
 
 # 7. (Optional) Disable IPv6 if you are not using it
 # echo_info "Disabling IPv6..."
